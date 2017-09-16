@@ -31,7 +31,6 @@ export class Home extends React.Component<IProps, IState> {
         return {
             home: {
                 position: "relative",
-                background: colors.blk,
                 overflow: "hidden",
                 fontFamily: "'Palanquin Dark', 'arial', sans-serif"
             },

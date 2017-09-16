@@ -3,8 +3,9 @@ import { IDictionary, IPage } from '../../models/models';
 import { sudaParagraphs } from './paragraphs/suda';
 import { indyDutchParagraphs } from './paragraphs/indydutch';
 
-function PortfolioProject(name, imagePath, paragraphs) {
+function PortfolioProject(name, subHeading, imagePath, paragraphs) {
     this.name = name;
+    this.subHeading = subHeading;
     this.imagePath = imagePath;
     this.paragraphs = paragraphs;
     this.path = toPath(this.name);
@@ -13,11 +14,13 @@ function PortfolioProject(name, imagePath, paragraphs) {
 export const pageList: IPage[] = [
     new PortfolioProject(
         "Suda Sampath",
+        "My UpWork experience",
         "/images/Home/logo.jpg",
         sudaParagraphs
     ),
     new PortfolioProject(
         "IndyDutch Solutions",
+        "Associated businesses",
         "/images/Home/indydutch.png",
         indyDutchParagraphs
     )

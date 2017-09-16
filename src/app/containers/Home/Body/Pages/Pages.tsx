@@ -25,6 +25,8 @@ export class Pages extends React.Component<IProps, IState> {
             pages: {
                 position: "relative",
                 zIndex: 2,
+                width: "100%",
+                textAlign: "center",
                 opacity: isMounted ? 1 : 0,
                 filter: isMounted ? "none" : "blur(10px)",
                 transition: "opacity 1600ms, filter 1600ms"

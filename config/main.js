@@ -14,6 +14,7 @@ var config = {
       meta: [
         { charset: 'utf-8' },
         { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },
+        { name: 'google-site-verification', content: 'vzMpqHKPQqGZC8FZL2KRg53M_ttiAeBckqzItRQFW34' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: 'Warning for those doing business with Suda Sampath of Indydutch Solutions' },
       ]

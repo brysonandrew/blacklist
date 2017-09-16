@@ -9,7 +9,6 @@ interface IProps {
     index: number
     page: IPage
     store?: HomeStore<string>
-    previewWidth?: number
     offsetTop?: number
 }
 
@@ -29,25 +28,23 @@ export class Page extends React.Component<IProps, IState> {
     timeoutId;
 
     @computed public get styles(): any {
+        const { width } = this.props.store;
+
         return {
             page: {
                 position: "relative",
-                height: this.props.store.height,
                 width: "100%",
                 zIndex: 0,
                 cursor: "pointer"
             },
-            page__inner: {
-                position: "absolute",
-                textAlign: "center",
-                top: "10%",
-                tranform: "translate(-50%)"
-            },
             page__heading: {
-                fontSize: 62
+                fontSize: width < 500 ? 44 : 62
+            },
+            page__headingSub: {
+                fontSize: width < 500 ? 22 : 28
             },
             page__paragraph: {
-                fontSize: 20
+                fontSize: width < 500 ? 14 : 20
             }
         };
     }
@@ -91,20 +88,19 @@ export class Page extends React.Component<IProps, IState> {
         return (
             <section style={ this.styles.page }
                 onClick={this.handleClick}>
-                <div style={ this.styles.page__inner }>
-                    <h2 style={this.styles.page__heading}>
-                        {page.name}
-                    </h2>
-                    <div>
-                        <img src={page.imagePath}/>
-                    </div>
-                    <div>
-                        {page.paragraphs.map((paragraph, i) =>
-                            <p key={`paragraph-${i}`}
-                               style={this.styles.page__paragraph}>
-                                {paragraph}
-                            </p>)}
-                    </div>
+                <h2 style={this.styles.page__heading}>
+                    {page.name}
+                </h2>
+                <div>
+                    <img src={page.imagePath}/>
+                </div>
+                <h3 style={this.styles.page__headingSub}>{page.subHeading}</h3>
+                <div>
+                    {page.paragraphs.map((paragraph, i) =>
+                        <p key={`paragraph-${i}`}
+                           style={this.styles.page__paragraph}>
+                            {paragraph}
+                        </p>)}
                 </div>
             </section>
         );
