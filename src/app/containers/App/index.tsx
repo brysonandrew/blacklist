@@ -1,26 +1,22 @@
+import Fonts from '../../widgets/Fonts';
+
 const appConfig = require('../../../../config/main.js');
 
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import { MobxAsyncConnect, asyncConnect, store as mobxAsyncConnect } from 'mobx-async-connect';
-
-const style = require('./style.css');
+import { MobxAsyncConnect, asyncConnect } from 'mobx-async-connect';
 
 class App extends React.Component<any, any> {
 
-    renderDevTool() {
-        if (process.env.NODE_ENV !== 'production') {
-            const DevTools = require('mobx-react-devtools').default;
-            return (<DevTools />);
-        }
-    };
+    componentDidMount() {
+        Fonts();
+    }
 
     public render() {
         return (
-            <section className={style.AppContainer}>
+            <section>
                 <Helmet {...appConfig.app} {...appConfig.app.head}/>
                 {this.props.children}
-                {this.renderDevTool()}
             </section>
         );
     }

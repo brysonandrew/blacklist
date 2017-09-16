@@ -32,7 +32,8 @@ export class Home extends React.Component<IProps, IState> {
             home: {
                 position: "relative",
                 background: colors.blk,
-                overflow: "hidden"
+                overflow: "hidden",
+                fontFamily: "'Palanquin Dark', 'arial', sans-serif"
             },
             home__pages: {
                 opacity: this.state.isMounted ? 1 : 0,
