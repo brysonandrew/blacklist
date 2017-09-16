@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { browserHistory } from 'react-router';
-import { IParams, IPage } from "../../../../../../data/models/models";
+import { IPage } from "../../../../../../data/models/models";
 import { computed } from 'mobx';
 import { inject, observer } from 'mobx-react';
 import HomeStore from '../../../../../../mobx/stores/HomeStore';
@@ -34,13 +34,20 @@ export class Page extends React.Component<IProps, IState> {
                 position: "relative",
                 height: this.props.store.height,
                 width: "100%",
-                zIndex: 0
+                zIndex: 0,
+                cursor: "pointer"
             },
             page__inner: {
                 position: "absolute",
-                top: "50%",
-                tranform: "translate(-50%)",
-                fontSize: 80
+                textAlign: "center",
+                top: "10%",
+                tranform: "translate(-50%)"
+            },
+            page__heading: {
+                fontSize: 62
+            },
+            page__paragraph: {
+                fontSize: 20
             }
         };
     }
@@ -84,11 +91,20 @@ export class Page extends React.Component<IProps, IState> {
         return (
             <section style={ this.styles.page }
                 onClick={this.handleClick}>
-                <h1 style={ this.styles.page__inner }>
-                    {page.name}
-                </h1>
-                <div>
-                    <img src={page.imagePath}/>
+                <div style={ this.styles.page__inner }>
+                    <h2 style={this.styles.page__heading}>
+                        {page.name}
+                    </h2>
+                    <div>
+                        <img src={page.imagePath}/>
+                    </div>
+                    <div>
+                        {page.paragraphs.map((paragraph, i) =>
+                            <p key={`paragraph-${i}`}
+                               style={this.styles.page__paragraph}>
+                                {paragraph}
+                            </p>)}
+                    </div>
                 </div>
             </section>
         );
