@@ -8,5 +8,6 @@ export interface IParams {
 
 export interface IPage {
     name: string
+    imagePath: string
     path: string
 }

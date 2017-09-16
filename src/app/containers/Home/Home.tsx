@@ -51,7 +51,6 @@ export class Home extends React.Component<IProps, IState> {
 
     componentDidMount() {
         const { onResizeViewport, onLocationListen, onLoad } = this.props.store;
-        console.log("mounted");
         this.isFirstRender = false;
         // reset window pos
         window.scroll(0, 0);

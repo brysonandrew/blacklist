@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Logo } from './Logo/Logo';
 import { colors } from '../../data/themeOptions';
+import { pageList } from '../../data/content/pages/pages';
 
 interface IProps {
     isFirstRender: boolean
@@ -56,7 +56,8 @@ export class ScreenSaver extends React.Component<IProps, IState> {
         return (
             <div style={styles.screenSaver}>
                 <div style={styles.screenSaver__inner}>
-                    <Logo/>
+                    <img style={{width: 300, height: "auto"}} src={pageList[0].imagePath}/>
+                    <h2>A warning to anyone doing business with Suda Sampath of IndyDutch Solutions</h2>
                 </div>
             </div>
         );

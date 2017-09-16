@@ -82,12 +82,15 @@ export class Page extends React.Component<IProps, IState> {
         const { page } = this.props;
 
         return (
-            <div style={ this.styles.page }
+            <section style={ this.styles.page }
                 onClick={this.handleClick}>
-                <div style={ this.styles.page__inner }>
+                <h1 style={ this.styles.page__inner }>
                     {page.name}
+                </h1>
+                <div>
+                    <img src={page.imagePath}/>
                 </div>
-            </div>
+            </section>
         );
     }
 }

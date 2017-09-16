@@ -73,6 +73,7 @@ export class PagesInner extends React.Component<IProps, IState> {
         return {
             pagesInner: {
                 position: "relative",
+                background: "#eeeeee",
                 height: height + scrollHeight
             },
             pagesInner__inner: {
