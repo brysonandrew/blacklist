@@ -6,7 +6,7 @@ import { Page } from "./Page/Page";
 import { pageList } from '../../../../../data/content/pages/pages';
 import { inject, observer } from 'mobx-react';
 import HomeStore from '../../../../../mobx/stores/HomeStore';
-import {computed, observable} from 'mobx';
+import {computed} from 'mobx';
 
 interface IProps {
     store?: HomeStore<string>
@@ -120,7 +120,7 @@ export class PagesInner extends React.Component<IProps, IState> {
     };
 
     render(): JSX.Element {
-        const { docScroll, isMounted } = this.state;
+        const { docScroll } = this.state;
         const { onAnimationEnd, isAnimating } = this.props.store;
 
         return (

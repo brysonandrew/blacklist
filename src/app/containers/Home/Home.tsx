@@ -1,11 +1,11 @@
 import * as React from 'react';
+import HomeStore from '../../../mobx/stores/HomeStore';
 import createHistory from 'history/createBrowserHistory';
 import { Pages } from './Body/Pages/Pages';
 import { browserHistory } from 'react-router';
 import { toParams } from "../../../data/helpers/toParams";
 import { inject, observer } from 'mobx-react';
 import { computed } from 'mobx';
-import HomeStore from '../../../mobx/stores/HomeStore';
 
 interface IState {}
 
@@ -26,11 +26,7 @@ export class Home extends React.Component<IProps, IState> {
         return {
             home: {
                 position: "relative",
-                overflow: "hidden",
-                fontFamily: "'Encode Sans Expanded', 'arial', sans-serif"
-            },
-            home__pages: {
-                transition: "opacity 1600ms, filter 1600ms"
+                overflow: "hidden"
             }
         };
     }

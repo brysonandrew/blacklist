@@ -51,13 +51,6 @@ export class Page extends React.Component<IProps, IState> {
         };
     }
 
-    @computed public get isActive(): any {
-        const { page, index } = this.props;
-        const { savedParams } = this.props.store;
-        return page.path === savedParams.get("activePagePath")
-            || (!savedParams.get("activePagePath") && index === 0);
-    }
-
     public constructor(props?: any, context?: any) {
         super(props, context);
         this.state = {

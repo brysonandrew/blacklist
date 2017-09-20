@@ -8,13 +8,17 @@ import { MobxAsyncConnect, asyncConnect } from 'mobx-async-connect';
 
 class App extends React.Component<any, any> {
 
+    sectionStyle = {
+        fontFamily: "'Encode Sans Expanded', 'arial', sans-serif"
+    };
+
     componentDidMount() {
         Fonts();
     }
 
     public render() {
         return (
-            <section>
+            <section style={this.sectionStyle}>
                 <Helmet {...appConfig.app} {...appConfig.app.head}/>
                 {this.props.children}
             </section>
