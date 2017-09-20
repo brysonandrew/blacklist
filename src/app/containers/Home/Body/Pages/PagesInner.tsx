@@ -139,7 +139,7 @@ export class PagesInner extends React.Component<IProps, IState> {
                             index={i}
                             page={page}
                         />
-                    </div>}
+                    </div>)}
             </div>
         );
     }

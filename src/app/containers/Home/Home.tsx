@@ -7,9 +7,7 @@ import { inject, observer } from 'mobx-react';
 import { computed } from 'mobx';
 import HomeStore from '../../../mobx/stores/HomeStore';
 
-interface IState {
-    isMounted: boolean
-}
+interface IState {}
 
 interface IProps {
     store?: HomeStore<string>
@@ -20,7 +18,6 @@ interface IProps {
 export class Home extends React.Component<IProps, IState> {
 
     activeTimeout;
-    mountTimeout;
     home;
     isIdle = true;
     isFirstRender = true;
@@ -33,8 +30,6 @@ export class Home extends React.Component<IProps, IState> {
                 fontFamily: "'Encode Sans Expanded', 'arial', sans-serif"
             },
             home__pages: {
-                opacity: this.state.isMounted ? 1 : 0,
-                filter: this.state.isMounted ? "none" : "blur(10px)",
                 transition: "opacity 1600ms, filter 1600ms"
             }
         };
@@ -42,9 +37,6 @@ export class Home extends React.Component<IProps, IState> {
 
     constructor(props?: any, context?: any) {
         super(props, context);
-        this.state = {
-            isMounted: false
-        };
     }
 
     componentDidMount() {
