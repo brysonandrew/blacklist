@@ -67,7 +67,7 @@ export class Home extends React.Component<IProps, IState> {
 
         });
 
-        this.mountTimeout = setTimeout(() => this.setState({ isMounted: true }), 0);
+        this.mountTimeout = setTimeout(() => this.setState({ isMounted: true }), 600);
 
         window.addEventListener("resize"
             , () => onResizeViewport(window.innerWidth, window.innerHeight));
@@ -127,11 +127,11 @@ export class Home extends React.Component<IProps, IState> {
         return (
             <div style={ this.styles.home }
                  ref={el => el ? (this.home = el) : null}>
-                <div style={ this.styles.home__pages }>
-                    <Pages/>
-                </div>
-                {!isMounted
-                    &&  <div>
+                {isMounted
+                    ?   <div style={ this.styles.home__pages }>
+                            <Pages/>
+                        </div>
+                    :   <div>
                             <ScreenSaver
                                 isFirstRender={this.isFirstRender}
                             />
