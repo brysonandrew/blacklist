@@ -48,16 +48,19 @@ export class ScreenSaver extends React.Component<IProps, IState> {
             },
             screenSaver__inner: {
                 position: "absolute",
+                textAlign: "center",
                 top: "50%",
                 left: "50%",
-                transform: "translate(-50%, -50%) scale(2)",
+                transform: "translate(-50%, -50%)",
             }
         } as any;
         return (
             <div style={styles.screenSaver}>
                 <div style={styles.screenSaver__inner}>
-                    <img style={{width: 300, height: "auto"}} src={pageList[0].imagePath}/>
-                    <h2>A warning to anyone doing business with Suda Sampath of IndyDutch Solutions</h2>
+                    <img style={{display: "inline-block", width: 300, height: "auto"}} src={pageList[0].imagePath}/>
+                    <h2 style={{color: "red"}}>
+                        A warning to anyone doing business with Suda Sampath of IndyDutch Solutions
+                    </h2>
                 </div>
             </div>
         );

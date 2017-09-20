@@ -86,7 +86,6 @@ export class Page extends React.Component<IProps, IState> {
 
     render(): JSX.Element {
         const { page } = this.props;
-        console.log(page);
         return (
             <section style={ this.styles.page }
                 onClick={this.handleClick}>
