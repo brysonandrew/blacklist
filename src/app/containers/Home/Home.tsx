@@ -1,11 +1,11 @@
 import * as React from 'react';
 import HomeStore from '../../../mobx/stores/HomeStore';
 import createHistory from 'history/createBrowserHistory';
-import { Pages } from './Body/Pages/Pages';
 import { browserHistory } from 'react-router';
 import { toParams } from "../../../data/helpers/toParams";
 import { inject, observer } from 'mobx-react';
 import { computed } from 'mobx';
+import { Pages } from './Body/Pages/Pages';
 
 interface IState {}
 
@@ -26,7 +26,8 @@ export class Home extends React.Component<IProps, IState> {
         return {
             home: {
                 position: "relative",
-                overflow: "hidden"
+                textAlign: "center",
+                width: "100%"
             }
         };
     }
@@ -78,9 +79,8 @@ export class Home extends React.Component<IProps, IState> {
         return (
             <div style={ this.styles.home }
                  ref={el => el ? (this.home = el) : null}>
-                <div style={ this.styles.home__pages }>
-                    <Pages/>
-                </div>
+                <h1>Suda Sampath of IndyDutch Solutions</h1>
+                <Pages/>
             </div>
         );
     }
