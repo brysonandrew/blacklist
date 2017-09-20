@@ -8,8 +8,9 @@ export interface IParams {
 
 export interface IPage {
     name: string
-    subHeading: string
-    imagePath: string
-    paragraphs: string[]
     path: string
+    subHeading: string
+    linkPath?: string
+    imagePath?: string
+    paragraphs?: string[]
 }

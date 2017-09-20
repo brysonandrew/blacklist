@@ -120,7 +120,7 @@ export class PagesInner extends React.Component<IProps, IState> {
     };
 
     render(): JSX.Element {
-        const { docScroll } = this.state;
+        const { docScroll, isMounted } = this.state;
         const { onAnimationEnd, isAnimating } = this.props.store;
 
         return (
@@ -133,13 +133,15 @@ export class PagesInner extends React.Component<IProps, IState> {
                                                 onRest={onAnimationEnd}
                                             />}
                 {pageList.map((page, i) =>
-                    <div key={`page-${i}`}
-                         style={ this.styles.pagesInner__page }>
-                        <Page
-                            index={i}
-                            page={page}
-                        />
-                    </div>)}
+                    (i === 0 || i > 0 && isMounted)
+                    ?   <div key={`page-${i}`}
+                             style={ this.styles.pagesInner__page }>
+                            <Page
+                                index={i}
+                                page={page}
+                            />
+                        </div>
+                    :   null)}
             </div>
         );
     }

@@ -33,7 +33,8 @@ export class Page extends React.Component<IProps, IState> {
         return {
             page: {
                 position: "relative",
-                width: "100%",
+                width: "calc(100% - 40px)",
+                padding: "0 20px",
                 zIndex: 0,
                 cursor: "pointer"
             },
@@ -41,7 +42,8 @@ export class Page extends React.Component<IProps, IState> {
                 fontSize: width < 500 ? 44 : 62
             },
             page__headingSub: {
-                fontSize: width < 500 ? 22 : 28
+                fontSize: width < 500 ? 22 : 28,
+                color: "red"
             },
             page__paragraph: {
                 fontSize: width < 500 ? 14 : 20
@@ -84,24 +86,37 @@ export class Page extends React.Component<IProps, IState> {
 
     render(): JSX.Element {
         const { page } = this.props;
-
+        console.log(page);
         return (
             <section style={ this.styles.page }
                 onClick={this.handleClick}>
                 <h2 style={this.styles.page__heading}>
                     {page.name}
                 </h2>
-                <div>
-                    <img src={page.imagePath}/>
-                </div>
-                <h3 style={this.styles.page__headingSub}>{page.subHeading}</h3>
-                <div>
-                    {page.paragraphs.map((paragraph, i) =>
-                        <p key={`paragraph-${i}`}
-                           style={this.styles.page__paragraph}>
-                            {paragraph}
-                        </p>)}
-                </div>
+                {page.imagePath
+                    ?   <div>
+                            <img alt={page.name} src={page.imagePath}/>
+                        </div>
+                    :   null}
+                {page.linkPath
+                    ?   <div>
+                            <a href={page.linkPath} target={"_blank"}>
+                                {page.linkPath}
+                            </a>
+                        </div>
+                    :   null}
+                <h3 style={this.styles.page__headingSub}>
+                    {page.subHeading}
+                </h3>
+                {page.paragraphs
+                    ?   <div>
+                        {page.paragraphs.map((paragraph, i) =>
+                            <p key={`paragraph-${i}`}
+                               style={this.styles.page__paragraph}>
+                                {paragraph}
+                            </p>)}
+                        </div>
+                    :   null}
             </section>
         );
     }

@@ -4,7 +4,7 @@ const Fonts = () => {
 
 const palanquinDarkFont = () => {
     const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css?family=Palanquin+Dark';
+    link.href = 'https://fonts.googleapis.com/css?family=Encode+Sans+Expanded';
     link.rel = 'stylesheet';
 
     document.head.appendChild(link);
