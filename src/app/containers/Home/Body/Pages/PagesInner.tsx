@@ -133,15 +133,13 @@ export class PagesInner extends React.Component<IProps, IState> {
                                                 onRest={onAnimationEnd}
                                             />}
                 {pageList.map((page, i) =>
-                    (i === 0 || i > 0 && isMounted)
-                    ?   <div key={`page-${i}`}
-                             style={ this.styles.pagesInner__page }>
-                            <Page
-                                index={i}
-                                page={page}
-                            />
-                        </div>
-                    :   null)}
+                    <div key={`page-${i}`}
+                         style={ this.styles.pagesInner__page }>
+                        <Page
+                            index={i}
+                            page={page}
+                        />
+                    </div>}
             </div>
         );
     }
