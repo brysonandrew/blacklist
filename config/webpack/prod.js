@@ -114,10 +114,6 @@ var config = {
       }
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      filename: 'js/[name].[chunkhash].js',
-      minChunks: Infinity
-    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
