@@ -7,7 +7,9 @@ import { inject, observer } from 'mobx-react';
 import { computed } from 'mobx';
 import { Pages } from './Body/Pages/Pages';
 
-interface IState {}
+interface IState {
+    isMounted?: boolean
+}
 
 interface IProps {
     store?: HomeStore<string>
@@ -21,19 +23,25 @@ export class Home extends React.Component<IProps, IState> {
     home;
     isIdle = true;
     isFirstRender = true;
+    timerId: any;
 
     @computed public get styles(): any {
         return {
             home: {
                 position: "relative",
+                opacity: this.state.isMounted ? 1 : 0,
                 textAlign: "center",
-                width: "100%"
+                width: "100%",
+                transition: "opacity 200ms"
             }
         };
     }
 
     constructor(props?: any, context?: any) {
         super(props, context);
+        this.state = {
+            isMounted: false
+        };
     }
 
     componentDidMount() {
@@ -54,6 +62,10 @@ export class Home extends React.Component<IProps, IState> {
 
         });
 
+        this.timerId = setTimeout(() => this.setState({
+            isMounted: true
+        }), 500);
+
         window.addEventListener("resize"
             , () => onResizeViewport(window.innerWidth, window.innerHeight));
         window.addEventListener("load"
@@ -68,6 +80,8 @@ export class Home extends React.Component<IProps, IState> {
             this.activeTimeout = false;
         }
 
+        clearTimeout(this.timerId);
+
         window.removeEventListener("resize"
             , () => onResizeViewport(window.innerWidth, window.innerHeight));
         window.removeEventListener("load"
@@ -80,7 +94,7 @@ export class Home extends React.Component<IProps, IState> {
             <div style={ this.styles.home }
                  ref={el => el ? (this.home = el) : null}>
                 <h1>Suda Sampath of IndyDutch Solutions</h1>
-                <Pages/>
+                {this.state.isMounted ? <Pages/> : null}
             </div>
         );
     }

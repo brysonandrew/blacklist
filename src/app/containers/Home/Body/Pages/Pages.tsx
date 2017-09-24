@@ -12,11 +12,14 @@ interface IProps {
 }
 
 interface IState {
+    isMounted: boolean
 }
 
 @inject('store')
 @observer
 export class Pages extends React.Component<IProps, IState> {
+
+    timerId: any;
 
     @computed public get projectOffsetList(): number[] {
         return pageList.map((project, i) => i * this.props.store.height);
@@ -40,29 +43,35 @@ export class Pages extends React.Component<IProps, IState> {
     @computed public get styles(): any {
         return {
             pagesInner: {
+                opacity: this.state.isMounted ? 1 : 0,
                 display: "inline-block",
                 width: "100%",
                 background: "#eeeeee",
+                transition: "opacity 200ms"
             },
             pagesInner__page: {
                 position: "relative",
-                height: this.props.store.height,
+                height: "100vh"
             }
         };
     }
 
     public constructor(props?: any, context?: any) {
         super(props, context);
+        this.state = {
+            isMounted: false
+        };
     }
 
     componentDidMount() {
-        this.setState({
+        this.timerId = setTimeout(() => this.setState({
             isMounted: true
-        });
+        }), 500);
         window.addEventListener("scroll", this.handleScroll);
     }
 
     componentWillUnmount() {
+        clearTimeout(this.timerId);
         window.removeEventListener("scroll", this.handleScroll);
     }
 
@@ -87,17 +96,18 @@ export class Pages extends React.Component<IProps, IState> {
     };
 
     render(): JSX.Element {
-
         return (
             <div style={ this.styles.pagesInner }>
                 {pageList.map((page, i) =>
-                    <div key={`page-${i}`}
-                         style={ this.styles.pagesInner__page }>
-                        <Page
-                            index={i}
-                            page={page}
-                        />
-                    </div>)}
+                    (i === 0 || this.state.isMounted)
+                    ?   <div key={`page-${i}`}
+                             style={ this.styles.pagesInner__page }>
+                            <Page
+                                index={i}
+                                page={page}
+                            />
+                        </div>
+                    :   null)}
             </div>
         );
     }

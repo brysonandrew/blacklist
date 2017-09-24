@@ -23,7 +23,7 @@ class Html extends React.Component<IHtmlProps, {}> {
         const head = Helmet.rewind();
         const { markup, store } = this.props;
 
-        const scripts = this.resolve(['vendor.js', 'app.js']);
+        const scripts = this.resolve(['app.js']);
         const renderScripts = scripts.map((src, i) =>
             <script src={src} key={i} />,
         );

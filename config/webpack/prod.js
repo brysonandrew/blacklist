@@ -18,7 +18,6 @@ var config = {
   entry: {
     app: './src/client.tsx',
     vendor: [
-      './src/vendor/main.ts',
       'react',
       'react-dom',
       'react-router',
@@ -116,7 +115,6 @@ var config = {
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
       filename: 'js/[name].[chunkhash].js',
       minChunks: Infinity
     }),
