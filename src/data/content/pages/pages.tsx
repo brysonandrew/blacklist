@@ -14,7 +14,7 @@ function Page(name, subHeading, imagePath?, linkPath?, paragraphs?) {
 export const pageList: IPage[] = [
     new Page(
         "Suda Sampath",
-        "The person pictured owes me a total of 1,232 USD.",
+        "The person pictured owes me a total of 432 USD.",
         "/images/Home/logo.jpg",
         null,
         sudaParagraphs
