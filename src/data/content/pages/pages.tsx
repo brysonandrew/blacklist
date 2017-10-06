@@ -14,7 +14,7 @@ function Page(name, subHeading, imagePath?, linkPath?, paragraphs?) {
 export const pageList: IPage[] = [
     new Page(
         "Suda Sampath",
-        "The person pictured owes me a total of 432 USD.",
+        "The person pictured owed me a total of 1232 USD, until he found out about this website, after which he reluctantly paid.",
         "/images/Home/logo.jpg",
         null,
         sudaParagraphs
@@ -28,21 +28,6 @@ export const pageList: IPage[] = [
         "Sensy Touch",
         "Associated business",
         "/images/Home/sensytouch.png"
-    ),
-    new Page(
-        "IPG Pharmaceuticals",
-        "Associated business",
-        "/images/Home/ipg.png"
-    ),
-    new Page(
-        "Aqualux",
-        "Associated business",
-        "/images/Home/aqualux.png"
-    ),
-    new Page(
-        "BIO Mast",
-        "Associated business",
-        "/images/Home/biomast.png"
     ),
     new Page(
         "Facebook",

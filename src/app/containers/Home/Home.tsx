@@ -94,7 +94,7 @@ export class Home extends React.Component<IProps, IState> {
             <div style={ this.styles.home }
                  ref={el => el ? (this.home = el) : null}>
                 <h1>Suda Sampath of IndyDutch Solutions</h1>
-                {this.state.isMounted ? <Pages/> : null}
+                <Pages/>
             </div>
         );
     }
